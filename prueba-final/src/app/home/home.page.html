@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-title text-center>
+        Log In
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+      <ion-list lines="none">
+      
+          <form #log="ngForm" [formGroup]="logInForm" (submit)="logIn(log)">
+      
+              <ion-item>
+                  <ion-label position="floating">First Name</ion-label>
+                  <ion-input name="fName" formControlName="firstName" type="text" required=true></ion-input>
+              </ion-item>
+  
+              <ion-item *ngIf="!logInForm.controls.firstName.valid && logInForm.controls.firstName.dirty">
+                  <p>Name can only contain letters</p>
+              </ion-item>
+      
+              <ion-item>
+                  <ion-label position="floating">Last Name</ion-label>
+                  <ion-input name="lName" formControlName="lastName" type="text" required=true></ion-input>
+              </ion-item>
+  
+              <ion-item *ngIf="!logInForm.controls.lastName.valid && logInForm.controls.lastName.dirty">
+                  <p>Last name can only contain letters</p>
+              </ion-item>
+  
+              <ion-item>
+                  <ion-label position="floating">Identification</ion-label>
+                  <ion-input name="id"  type="password" required=true></ion-input>
+              </ion-item>
+  
+              <!-- The button only activates when all the information filled in the form is valid-->
+              <ion-button type="submit" [disabled]="!logInForm.valid">Log In</ion-button> 
+      
+          </form>
+
+          <div text-center margin-top>
+            <span (click)="goToRegister()" class="paz" tappable>
+              <ion-text color="medium">
+                New here? <strong>Sign Up</strong>
+              </ion-text>
+            </span>
+          </div>
+      
+      </ion-list>
+  </ion-content>
+  
+  

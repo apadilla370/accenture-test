@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="home" [text]=""></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center style="padding-inline-start: 50px;
+    -webkit-padding-end: 80px;
+    padding-inline-end: 80px;">
+      Sign Up
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list lines="none">
+    
+        <form #signform="ngForm" [formGroup]="signUpForm" (submit)="saveUser(signform)">
+    
+            <ion-item>
+                <ion-label position="floating">First Name</ion-label>
+                <ion-input name="fName" formControlName="firstName" type="text" required=true></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!signUpForm.controls.firstName.valid && signUpForm.controls.firstName.dirty">
+                <p>Name can only contain letters</p>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating">Last Name</ion-label>
+                <ion-input name="lName" formControlName="lastName" type="text" required=true></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!signUpForm.controls.lastName.valid && signUpForm.controls.lastName.dirty">
+                <p>Last name can only contain letters</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Identification</ion-label>
+                <ion-input name="id" formControlName="identification" type="text" required=true></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!signUpForm.controls.identification.valid && signUpForm.controls.identification.dirty">
+                <p>Identification can only contain numbers</p>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating">Birth Date</ion-label>
+                <ion-input name="bDate" formControlName="birthDate" type="date" required=true></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!signUpForm.controls.birthDate.valid && signUpForm.controls.birthDate.dirty">
+                <p>You must be 18 or older</p>
+            </ion-item>
+
+            <!-- The button only activates when all the information filled in the form is valid-->
+            <ion-button type="submit" [disabled]="!signUpForm.valid">Submit</ion-button> 
+    
+        </form>
+    
+    </ion-list>
+</ion-content>
